@@ -33,15 +33,18 @@ namespace TunifyPlatform.Data
             );
             
 
+
             // Seed Users
             modelBuilder.Entity<Users>().HasData(
                 new Users { UsersId = 1, Username = "Ibrahim Nimer", Email = "ibrahim@gmail.com", Join_Date = new DateTime(2024, 8, 4), Subscription_ID = 1 }
             );
 
+
             // Seed Songs
             modelBuilder.Entity<Song>().HasData(
                 new Song { SongId = 1, Title = "Some One Like You", ArtistId = 1 }
             );
+
 
             // Seed Playlists
             modelBuilder.Entity<Playlist>().HasData(
