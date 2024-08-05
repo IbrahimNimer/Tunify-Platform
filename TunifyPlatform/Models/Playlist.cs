@@ -3,6 +3,7 @@
     public class Playlist
     {
         public int PlaylistId { get; set; }
+
         public int UsersId { get; set; }
         public Users Users { get; set; }
         public string Playlist_Name { get; set; }
