@@ -54,6 +54,32 @@ The Tunify Platform uses several key entities, each of which is related to other
      - An album is associated with one artist.
      - Albums can contain multiple songs (though the relationship is not explicitly defined in the current model).
 
+## Repository Design Pattern
+
+### Explanation
+
+The Repository Design Pattern is a structural pattern that provides a centralized place to manage data access logic, separating it from the business logic of an application. It involves creating repository classes that handle all data operations related to specific entities.
+
+### Benefits
+
+- **Encapsulation**: It encapsulates the data access logic, providing a clean separation between the business logic and data access layers.
+- **Testability**: By abstracting the data access logic, it becomes easier to write unit tests for the business logic without relying on the actual database.
+- **Maintainability**: Changes to the data access logic are localized within the repository classes, making the codebase easier to maintain and refactor.
+- **Reusability**: Repository classes can be reused across different parts of the application, promoting code reuse and reducing duplication.
+- **Consistency**: By centralizing data access logic, it ensures consistent data operations throughout the application.
+
+### Implementation in Tunify Platform
+
+In the Tunify Platform, we use the `TunifyDbContext` to manage the database operations for the entities. Each entity has a corresponding repository class that handles CRUD (Create, Read, Update, Delete) operations, as well as any additional data operations required by the business logic. For example:
+
+- **UserRepository**: Manages data operations for the `Users` entity.
+- **SongRepository**: Manages data operations for the `Song` entity.
+- **PlaylistRepository**: Manages data operations for the `Playlist` entity.
+- **ArtistRepository**: Manages data operations for the `Artist` entity.
+
+Each repository class interacts with the `TunifyDbContext` to perform database operations, ensuring a clean separation of concerns and a more maintainable codebase.
+
+
 ## Additional Information
 
 - **Database Context**: `TunifyDbContext` is used to manage the database operations for the entities.
