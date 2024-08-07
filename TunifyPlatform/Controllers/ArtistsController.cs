@@ -13,59 +13,56 @@ namespace TunifyPlatform.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class ArtistsController : ControllerBase
     {
-        private readonly IUser _context;
+        private readonly IArtist _context;
 
-        public UsersController(IUser context)
+        public ArtistsController(IArtist context)
         {
             _context = context;
         }
 
-        // GET: api/Users
-        [Route("/GetAllUsers")]
+        // GET: api/Artists
+        [Route("/GetAllArtists")]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Users>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<Artist>>> GetArtist()
         {
-          
-
-            return await _context.GetAllUsers();
-
+            return await _context.GetAllArtists();
         }
 
-        // GET: api/Users/5
+        // GET: api/Artists/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Users>> GetUsers(int id)
+        public async Task<ActionResult<Artist>> GetArtist(int id)
         {
-
-            return await _context.GetUserById(id);
-
+            return await _context.GetArtistById(id);
         }
 
-        // PUT: api/Users/5
+        // PUT: api/Artists/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsers(int id, Users users)
+        public async Task<IActionResult> PutArtist(int id, Artist artist)
         {
-            var update = _context.UpdateUser(id, users);
+            var update = _context.UpdateArtist(id, artist);
             return Ok(update);
         }
 
-        // POST: api/Users
+        // POST: api/Artists
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Users>> PostUsers(Users users)
+        public async Task<ActionResult<Artist>> PostArtist(Artist artist)
         {
-          var add = _context.CreateUser(users);
+            var add = _context.CreateArtist(artist);
             return Ok(add);
         }
 
-        // DELETE: api/Users/5
+        // DELETE: api/Artists/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUsers(int id)
+        public async Task<IActionResult> DeleteArtist(int id)
         {
-            var delete = _context.DeleteUser(id);
+            var delete = _context.DeleteArtist(id);
             return Ok(delete);
         }
+
+       
     }
 }
