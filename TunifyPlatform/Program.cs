@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TunifyPlatform.Data;
+using TunifyPlatform.Repositories.Services;
+using TunifyPlatform.Repositories.Interfaces;
 
 
 namespace TunifyPlatform
@@ -16,6 +18,13 @@ namespace TunifyPlatform
 
 
             builder.Services.AddDbContext<TunifyDbContext>(options => options.UseSqlServer(connection));
+
+
+            builder.Services.AddScoped<IUser, UserService>();
+            builder.Services.AddScoped<IArtist, ArtistService>();
+            builder.Services.AddScoped<IPlaylist, PlaylistService>();
+            builder.Services.AddScoped<ISongs, SongService>();
+
 
             var app = builder.Build();
 
